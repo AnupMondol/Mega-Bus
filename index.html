@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1>Mega City Bus</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Explore By Bus</h3>
+
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">From</label>
+                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                </div>
+                <div class="input-group">
+                    <label" for="">From</label>
+                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="inputs">
+                <div class="input-group f-class">
+                <div>
+                    <label for="">First Class  ($ <span id="first-class-price">150</span>)</label>
+                    <input id="first-class-value" class="inp-style inp-width" type="number" value="0">
+                    
+                </div>
+                <div class="plus-minus">
+                    <button onclick="plusMinus('first', true)" class="plus-minus-btn"><b>+</b></button>
+                    <br>
+                    <button onclick="plusMinus('first', false)" class="plus-minus-btn"><b>-</b></button>
+                </div>
+                
+            </div>
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy ($<span id="economy-class-price">100</span>)</label>
+                        <input id="economy-class-value" class="inp-style inp-width" type="number" value="0">
+                    </div>
+                    <div class="plus-minus">
+                        <button onclick="plusMinus('economy', true)" class="plus-minus-btn"><b>+</b></button>
+                        <br>
+                        <button onclick="plusMinus('economy', false)" class="plus-minus-btn"><b>-</b></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="sub-total">$000</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat">$00</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total">$000</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="alert('Your Booking is Successfull')" class="btn-style">Book Now</button>
+        </div>
+    </main>
+
+    <!-- java script -->
+
+    <script>
+
+        function plusMinus(classs, isIncrese,){
+            const classValue = document.getElementById(classs + "-class-value");
+            const classNumber = parseFloat(classValue.value);
+
+            let classNewNumber = 0;
+            if (isIncrese == true){
+                 classNewNumber = classNumber + 1;
+            }
+            if(isIncrese == false && classNumber > 0){
+                classNewNumber = classNumber - 1;
+            }
+
+            document.getElementById(classs + "-class-value").value = classNewNumber;
+
+            let subTotal = 0;
+
+            if(classs == "first"){
+                subTotal = classNewNumber * 150;
+            }
+            if(classs == "economy"){
+                subTotal = classNewNumber * 100;
+            }
+            
+            document.getElementById("sub-total").innerText = '$' + subTotal;
+
+            let vat = classNewNumber * 10;
+            document.getElementById("vat").innerText = '$' + vat;
+
+            let total = subTotal + vat;
+            document.getElementById("total").innerText = '$' + total;
+
+
+        }
+
+    </script>
+
+    <!--Thank You-->
+</body>
+
+</html>
